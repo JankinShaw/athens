@@ -266,6 +266,10 @@
          expansion    (or title uid)]
      (auto-complete-inline block-uid _state-hooks target expansion)))
 
+
+;; There might be bugs here. If i type "[[c"，it will trigger the drop-down options for a lis of options of pages that I can "refer to". Here, the options will be shown correctly, but when we use the mouse cursor to select one, it can click , but the clicked "page" won't be updated into completing the , for example"[[climate change]]" correctly, it will , instead, leave what I have typed in before , the incomplete [[c]] as a completed one. 
+
+;; However, if I use the keyboard button like "downward arrow“ to navigate downward the list , and press "return", it can autocomplete. The problem only exists in "mouse operation".
   ([block-uid _state-hooks target expansion]
    (let [query @(rf/subscribe [::inline-search.subs/query block-uid])
          {:keys [end]} (destruct-target target)
