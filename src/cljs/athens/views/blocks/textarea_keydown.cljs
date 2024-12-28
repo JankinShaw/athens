@@ -759,6 +759,8 @@
     (pair-char-set key)))
 
 
+
+;; bug is here?
 (defn handle-pair-char
   [e uid {:keys [read-value]}]
   (let [{:keys [key target start end selection value]} (destruct-key-down e)

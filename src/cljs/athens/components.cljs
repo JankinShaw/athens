@@ -22,7 +22,7 @@
                                :add-time? true
                                :source    :todo-click}])))
 
-
+;; the bug??
 (defn span-click-stop
   "Stop clicks from propagating to textarea and thus preventing edit mode
    TODO() - might be a good idea to keep an edit icon at top right

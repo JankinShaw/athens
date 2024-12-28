@@ -173,7 +173,7 @@
   : https://developer.mozilla.org/en-US/docs/Web/API/HTML_Drag_and_Drop_API#Define_a_drop_zone"
 
   [e block]
-  (.. e stopPropagation)
+  ;;(.. e stopPropagation)
   (let [{target-uid :block/uid} block
         [target-uid _]          (db/uid-and-embed-id target-uid)
         drag-target             @(rf/subscribe [::drag.subs/drag-target target-uid])
@@ -219,7 +219,7 @@
               :visibility (if (pos? count) "visible" "hidden")
               :isActive active?
               :onClick (fn [e]
-                         (.. e stopPropagation)
+                         ;;(.. e stopPropagation)
                          (click-fn e))}
    count])
 
@@ -254,7 +254,7 @@
          [:> HStack {:lineHeight "1"}
           [:> Toggle {:isOpen   @inline-ref-open?
                       :on-click (fn [e]
-                                  (.. e stopPropagation)
+                                  ;;(.. e stopPropagation)
                                   (rf/dispatch [::inline-refs.events/toggle-state-open! orig-uid]))}]
 
           [:> Breadcrumb {:fontSize "xs" :color "foreground.secondary"}
@@ -276,7 +276,7 @@
                                                        new-P (concat
                                                                (take-while (fn [b] (not= (:block/uid b) uid)) @inline-ref-parents)
                                                                [breadcrumb-block])]
-                                                   (.. e stopPropagation)
+                                                   ;;(.. e stopPropagation)
                                                    (rf/dispatch [::inline-refs.events/set-block! orig-uid new-B])
                                                    (rf/dispatch [::inline-refs.events/set-parents! orig-uid new-P])
                                                    (rf/dispatch [::inline-refs.events/set-focus! orig-uid false]))))}
@@ -538,7 +538,7 @@
                                        true
                                        false)
                             :onClick (fn [e]
-                                       (.. e stopPropagation)
+                                       ;;(.. e stopPropagation)
                                        (if (true? linked-ref)
                                          (rf/dispatch [::linked-ref.events/toggle-open! uid])
                                          (block-open-toggle! uid (not open))))}]))
